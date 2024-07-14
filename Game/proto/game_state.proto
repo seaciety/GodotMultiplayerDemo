@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+message GameState {
+
+	message PlayerProto {
+		enum StateProto {
+			IDLE = 0;
+			MOVE = 1;
+			ATTACK = 2;
+			DEAD = 3;
+			JUMPING = 4;
+			FALLING = 5;
+			LANDING = 6;
+		}
+		int32 id = 0;
+		float position_x = 1;
+		float position_y = 2;
+		StateProto state = 3;
+		int32 health = 4;
+		string username = 5;
+	}
+
+	message ProjectileProto {
+		int32 id = 0;
+		int32 owner_id = 1;
+		float position_x = 2;
+		float position_y = 3;
+		float velocity_x = 4;
+		float velocity_y = 5;
+		int32 damage = 6;
+	}
+
+	int64 tick = 0;
+	repeated PlayerProto players = 1;
+	repeated ProjectileProto projectiles = 2;
+}

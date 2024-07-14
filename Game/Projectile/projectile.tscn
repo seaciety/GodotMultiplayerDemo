@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwtajlwl1x5u6"]
+
+[ext_resource type="Script" path="res://Game/Projectile/projectile.gd" id="1_10ck3"]
+[ext_resource type="Texture2D" uid="uid://bwgs7mjmo3o1h" path="res://Textures/one_white_pixel.png" id="2_6mqg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4ep4"]
+size = Vector2(5, 5)
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_10ck3")
+
+[node name="TTLTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_6mqg4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m4ep4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TTLTimer" to="." method="_on_ttl_timer_timeout"]

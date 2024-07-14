@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu8a0pgm6meq2"]
+
+[ext_resource type="Script" path="res://UI/MainMenu/menu.gd" id="1_olhdg"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_olhdg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -103.0
+offset_right = 125.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer Demo"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="IPAddressHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="IPAddressLabel" type="Label" parent="VBoxContainer/IPAddressHBoxContainer"]
+layout_mode = 2
+text = "IP Address: "
+
+[node name="IPAddressLineEdit" type="LineEdit" parent="VBoxContainer/IPAddressHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+
+[node name="NameHBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameHBoxContainer"]
+layout_mode = 2
+text = "Username: 
+"
+
+[node name="NameLineEdit" type="LineEdit" parent="VBoxContainer/NameHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Join" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Join"
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Host"
+
+[node name="Server" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Server Mode"
+
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]

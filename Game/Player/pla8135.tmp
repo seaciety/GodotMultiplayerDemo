@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp0lc4ylsdbh4"]
+
+[ext_resource type="Script" path="res://Game/Player/player.gd" id="1_siry4"]
+[ext_resource type="Texture2D" uid="uid://cvkc2y0w4cso0" path="res://Textures/player_facepng.png" id="2_tvgxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cm0s"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_siry4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tvgxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0cm0s")
+
+[node name="FloorDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 30)
+collision_mask = 2
+
+[node name="JumpTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DebugStatus" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -33.0
+offset_right = 23.0
+offset_bottom = -10.0
+text = "falling"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

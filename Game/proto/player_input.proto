@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message InputDictProto {
+    message PlayerInputProto {
+
+        enum Movement {
+            NONE = 0;
+            MOVE_RIGHT = 1;
+            MOVE_LEFT = 2;
+        }
+
+        Movement movement = 0;
+        bool jump = 1;
+        bool attack = 2;
+    }
+
+    map<int64, PlayerInputProto> inputs = 0;
+}

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://batlpdhq6iguv"]
+
+[ext_resource type="Script" path="res://Game/Player/lag_compensation_player.gd" id="1_kji2k"]
+[ext_resource type="Texture2D" uid="uid://dghq2ggarlkfq" path="res://Textures/hit_playerpng.png" id="2_1yixa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkwma"]
+
+[node name="LagCompensationPlayer" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_kji2k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xkwma")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.278431)
+z_index = 100
+texture = ExtResource("2_1yixa")
